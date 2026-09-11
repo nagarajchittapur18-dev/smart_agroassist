@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Smart AgroAssist{% endblock %}
+
+{% block content %}
+<section class="section" id="dashboard">
+    <h2 class="section-title">Dashboard</h2>
+    <p class="section-subtitle">Overview of your farm status</p>
+
+    <div class="dashboard-grid">
+        <!-- Left column -->
+        <div class="dashboard-left">
+            <div class="card">
+                <h3>👋 Hello, {{ user.first_name|default:user.username }}</h3>
+                <p>Here’s today’s overview for your farm.</p>
+            </div>
+
+            <div class="card-grid">
+                <!-- Weather card -->
+                <div class="card">
+                    <h4>Today’s Weather</h4>
+                    <p>Temperature: {{ weather.temp }} °C</p>
+                    <p>Rain Chance: {{ weather.rain }} %</p>
+                    <p>Humidity: {{ weather.humidity }} %</p>
+                </div>
+
+                <!-- Soil card -->
+                <div class="card">
+                    <h4>Soil Status</h4>
+                    <p>pH: {{ soil.ph }}</p>
+                    <p>N: {{ soil.n }} | P: {{ soil.p }} | K: {{ soil.k }}</p>
+                </div>
+
+                <!-- Recommended crop summary -->
+                <div class="card">
+                    <h4>Recommended Crop</h4>
+                    <p>Best Crop: <strong>{{ best_crop }}</strong></p>
+                    <a href="{% url 'crop_recommendation' %}" class="btn-secondary">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right column -->
+        <div class="dashboard-right">
+            <!-- Alerts -->
+            <div class="card">
+                <h3>🔔 Alerts</h3>
+                {% if alerts %}
+                    <ul class="list">
+                        {% for a in alerts %}
+                            <li>{{ a }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="section-subtitle">No alerts right now.</p>
+                {% endif %}
+            </div>
+
+            <!-- Quick actions -->
+            <div class="card">
+                <h3>Quick Actions</h3>
+                <div class="btn-group">
+                    <a href="{% url 'crop_recommendation' %}" class="btn-primary">
+                        Crop Recommendation
+                    </a>
+
+                    <!-- <a href="{% url 'fertilizer_recommendation' %}" class="btn-primary">
+                        Fertilizer Suggestion -->
+                    <!-- </a> -->
+                     <a href="{% url 'fertilizer_recommendation' %}" class="btn-primary">
+    Fertilizer Suggestion
+</a>
+
+                    <a href="{% url 'disease_detection' %}" class="btn-primary">
+                        Disease Detection
+                    </a>
+
+                    <a href="{% url 'chatbot' %}" class="btn-primary">
+                        Chatbot Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

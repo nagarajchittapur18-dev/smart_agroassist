@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Disease Detection | Smart AgroAssist{% endblock %}
+
+{% block content %}
+<section class="section" id="disease">
+    <h2 class="section-title">Disease Detection</h2>
+    <p class="section-subtitle">Upload leaf image to detect possible disease</p>
+
+    <div class="two-col">
+        <!-- LEFT: Upload Form -->
+        <div class="card form-card">
+            <h3>Upload Leaf Image</h3>
+            <p>Take a clear photo of the affected leaf and upload it below.</p>
+
+            <!-- For now just a basic form (you can connect to ML later) -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="upload-box">
+                    <p>Drag &amp; Drop image here (UI only)</p>
+                    <p>or</p>
+                    <input type="file" name="leaf_image" accept="image/*" style="margin:8px 0;">
+                </div>
+
+                <button type="submit" class="btn-primary">Analyze Disease</button>
+            </form>
+
+            <div class="info-box" style="margin-top: 14px;">
+                <h4>Tips for better results</h4>
+                <ul class="list">
+                    <li>Use good daylight when taking the photo.</li>
+                    <li>Focus only on the affected leaf area.</li>
+                    <li>Avoid blurry or too dark images.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- RIGHT: Sample / Result Section -->
+        <div class="card">
+            <h3>Disease Analysis Result</h3>
+
+            {% if result %}
+                <!-- If you later pass real result from view -->
+                <p><strong>Disease Name:</strong> {{ result.name }}</p>
+                <p><strong>Confidence:</strong> {{ result.confidence }} %</p>
+                {% if result.image_url %}
+    <img src="{{ result.image_url }}"
+         style="width:100%; max-width:300px; border-radius:10px; margin:15px 0;">
+{% endif %}
+                <div class="info-box">
+                    <h4>Symptoms</h4>
+                    <ul class="list">
+                        {% for s in result.symptoms %}
+                            <li>{{ s }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Recommended Action</h4>
+                    <p>{{ result.recommendation }}</p>
+                    <p style="font-size:0.85rem; margin-top:6px;">
+                        Note: Always verify treatment with local agriculture officers before using chemicals.
+                    </p>
+                </div>
+            {% else %}
+                <!-- Static placeholder for now -->
+                <p class="section-subtitle">
+                    After you upload an image and click <strong>Analyze Disease</strong>, the result will appear here.
+                    For demo purposes, you can explain how an ML model would classify leaf diseases.
+                </p>
+
+                <div class="info-box">
+                    <h4>Example (Sample Output)</h4>
+                    <p><strong>Disease Name:</strong> Possible Leaf Blight</p>
+                    <p><strong>Confidence:</strong> 87%</p>
+
+                    <h4 style="margin-top: 10px;">Symptoms</h4>
+                    <ul class="list">
+                        <li>Small brown spots on leaves.</li>
+                        <li>Spots merging into larger irregular patches.</li>
+                    </ul>
+
+                    <h4 style="margin-top: 10px;">Recommended Action</h4>
+                    <p>
+                        Use recommended fungicide as per local guidelines, remove heavily affected leaves,
+                        and avoid overhead irrigation in the evening.
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

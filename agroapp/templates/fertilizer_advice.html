@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Fertilizer Advice | Smart AgroAssist{% endblock %}
+
+{% block content %}
+<section class="section" id="fertilizer">
+    <h2 class="section-title">Fertilizer Advice</h2>
+    <p class="section-subtitle">Get fertilizer plan for your crop</p>
+
+    <div class="two-col">
+        <!-- LEFT: Form -->
+        <form method="POST" class="card form-card">
+            {% csrf_token %}
+            <h3>Crop Details</h3>
+
+            <!-- Select Crop -->
+            <label for="crop_name">Select Crop</label>
+            <select name="crop_name" id="crop_name">
+                <option value="">--Select Crop--</option>
+                <option value="Ragi" {% if selected_crop == "Ragi" %}selected{% endif %}>Ragi</option>
+                <option value="Maize" {% if selected_crop == "Maize" %}selected{% endif %}>Maize</option>
+                <option value="Paddy" {% if selected_crop == "Paddy" %}selected{% endif %}>Paddy</option>
+            </select>
+
+            <!-- Land Area (just UI, not used in query for now) -->
+            <label>Land Area (in acres)</label>
+            <input type="number" step="0.1" placeholder="e.g., 2">
+
+            <!-- Growth Stage (for future enhancements) -->
+            <label>Growth Stage</label>
+            <select>
+                <option>Sowing</option>
+                <option>Vegetative</option>
+                <option>Flowering</option>
+                <option>Harvesting</option>
+            </select>
+
+            <label>Soil Test Report Available?</label>
+            <select>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <button type="submit" class="btn-primary" style="margin-top:14px;">
+                Get Fertilizer Plan
+            </button>
+        </form>
+
+        <!-- RIGHT: Fertilizer Plan Table -->
+        <div class="card">
+            <h3>Fertilizer Plan</h3>
+
+            {% if selected_crop %}
+                <p class="section-subtitle">
+                    Showing plan for: <strong>{{ selected_crop }}</strong>
+                </p>
+            {% endif %}
+
+            {% if plans %}
+                <table class="simple-table">
+                    <thead>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Fertilizer</th>
+                            <th>Quantity/acre</th>
+                            <th>When</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in plans %}
+                            <tr>
+                                <td>{{ p.stage }}</td>
+                                <td>{{ p.fertilizer_name }}</td>
+                                <td>{{ p.quantity_per_acre }}</td>
+                                <td>{{ p.when_to_apply }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <h4>Precautions</h4>
+                    <p>
+                        Do not apply fertilizer just before heavy rain. Follow local agriculture
+                        officer guidance and safety instructions while handling chemicals.
+                    </p>
+                </div>
+            {% else %}
+                <p class="section-subtitle">
+                    {% if selected_crop %}
+                        No fertilizer data found for this crop yet. Please add entries in admin or via script.
+                    {% else %}
+                        Select a crop on the left and click "Get Fertilizer Plan" to view recommendations here.
+                    {% endif %}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

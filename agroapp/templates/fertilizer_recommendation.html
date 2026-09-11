@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}
+Fertilizer Recommendation | Smart AgroAssist
+{% endblock %}
+
+{% block content %}
+
+<section class="section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🌿 Smart Fertilizer Recommendation
+        </h2>
+
+        <p class="section-subtitle">
+            Enter soil nutrient values (N, P, K) to receive fertilizer suggestions.
+        </p>
+
+
+        <!-- FORM CARD -->
+
+        <div class="card fertilizer-form-card">
+
+            <form method="POST" class="fertilizer-form-grid">
+
+                {% csrf_token %}
+
+                <!-- Nitrogen -->
+                <div class="input-group">
+                    <label>Nitrogen (N)</label>
+                    <input
+                        type="number"
+                        name="nitrogen"
+                        placeholder="Enter Nitrogen value"
+                        required
+                    >
+                </div>
+
+
+                <!-- Phosphorus -->
+                <div class="input-group">
+                    <label>Phosphorus (P)</label>
+                    <input
+                        type="number"
+                        name="phosphorus"
+                        placeholder="Enter Phosphorus value"
+                        required
+                    >
+                </div>
+
+
+                <!-- Potassium -->
+                <div class="input-group">
+                    <label>Potassium (K)</label>
+                    <input
+                        type="number"
+                        name="potassium"
+                        placeholder="Enter Potassium value"
+                        required
+                    >
+                </div>
+
+
+                <!-- Submit Button -->
+
+                <div class="full-width">
+
+                    <button
+                        type="submit"
+                        class="btn-primary fertilizer-btn"
+                    >
+                        Get Fertilizer Recommendation
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- RESULT CARD -->
+
+        {% if fertilizer_result %}
+
+        <div class="fertilizer-result-card">
+
+            <h3>
+                🌱 Recommended Fertilizer
+            </h3>
+
+            <div class="fertilizer-value">
+
+                {{ fertilizer_result }}
+
+            </div>
+
+            <p class="fertilizer-note">
+
+                {{ recommendation_detail }}
+
+            </p>
+
+        </div>
+
+        {% endif %}
+
+
+    </div>
+
+</section>
+
+{% endblock %}

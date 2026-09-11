@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+AI Agro Assistant
+{% endblock %}
+
+{% block content %}
+
+<section class="section">
+
+<div class="chat-wrapper">
+
+<h2 class="section-title">
+🤖 AI Agriculture Assistant
+</h2>
+
+<p class="section-subtitle">
+Ask any farming question. The AI assistant will guide you.
+</p>
+
+
+<div class="chat-box">
+
+{% if chat_history %}
+
+{% for chat in chat_history %}
+
+<div class="chat-message user-message">
+<strong>You:</strong>
+{{ chat.user }}
+</div>
+
+<div class="chat-message bot-message">
+<strong>AI Assistant:</strong>
+{{ chat.bot }}
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="chat-message bot-message">
+<strong>AI Assistant:</strong>
+Hello! Ask me anything about crops, fertilizers, soil, irrigation, or farming techniques.
+</div>
+
+{% endif %}
+
+</div>
+
+
+<form method="POST" class="chat-input-area">
+
+{% csrf_token %}
+
+<input
+type="text"
+name="message"
+placeholder="Ask your farming question..."
+required
+>
+
+<button type="submit">
+Send
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+{% endblock %}

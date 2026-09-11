@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile | Smart AgroAssist{% endblock %}
+
+{% block content %}
+<section class="section" id="profile">
+    <h2 class="section-title">My Profile</h2>
+    <p class="section-subtitle">Manage your account and farm details</p>
+
+    <div class="two-col">
+        <!-- LEFT: Basic Profile -->
+        <div class="card">
+            <h3>Profile</h3>
+
+            {% with profile=user.farmer_profile %}
+                <p><strong>Name:</strong> {{ user.first_name|default:user.username }}</p>
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Phone:</strong> {{ profile.phone|default:"Not updated" }}</p>
+                <p><strong>Location:</strong>
+                    {% if profile.district or profile.village %}
+                        {{ profile.village|default:"" }}{% if profile.village and profile.district %}, {% endif %}{{ profile.district|default:"" }}
+                    {% else %}
+                        Not updated
+                    {% endif %}
+                </p>
+                <p><strong>Preferred Language:</strong>
+                    {% if profile.preferred_language == "kn" %}Kannada
+                    {% elif profile.preferred_language == "en" %}English
+                    {% elif profile.preferred_language == "hi" %}Hindi
+                    {% else %}Not set{% endif %}
+                </p>
+            {% endwith %}
+
+            <button class="btn-secondary" style="margin-top:10px;">
+                Edit Profile (future scope)
+            </button>
+        </div>
+
+        <!-- RIGHT: Farm & Account Details -->
+        <div class="card">
+            <h3>Farm Details</h3>
+            {% with profile=user.farmer_profile %}
+                <p><strong>Land Size:</strong>
+                    {% if profile.land_size_acres %}
+                        {{ profile.land_size_acres }} acres
+                    {% else %}
+                        Not updated
+                    {% endif %}
+                </p>
+                <p><strong>Soil Type:</strong>
+                    {% if profile.soil_type %}
+                        {{ profile.get_soil_type_display }}
+                    {% else %}
+                        Not updated
+                    {% endif %}
+                </p>
+                <p><strong>Preferred Crops:</strong>
+                    {% if profile.preferred_crops %}
+                        {{ profile.preferred_crops }}
+                    {% else %}
+                        Not updated
+                    {% endif %}
+                </p>
+            {% endwith %}
+
+            <h4 style="margin-top:16px;">Account Settings</h4>
+            <button class="btn-secondary" style="margin-top:8px;">
+                Change Password (via /admin or custom view)
+            </button>
+            <a href="{% url 'logout' %}" class="btn-danger" style="margin-top:8px; display:inline-block;">
+                Logout
+            </a>
+
+            <div class="info-box" style="margin-top: 12px;">
+                <h4>Note</h4>
+                <p style="font-size:0.85rem;">
+                    In future, you can allow farmers to update their land size, soil type,
+                    and preferred crops directly from this screen using an edit form.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,849 @@
+/* =========================
+   GLOBAL RESET & BASE
+   ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: #f5f7fa;
+    color: #222;
+    line-height: 1.5;
+}
+
+/* =========================
+   COLOR VARIABLES
+   ========================= */
+:root {
+    --primary: #2e7d32;
+    --primary-light: #e8f5e9;
+    --secondary: #fff8e1;
+    --danger: #c62828;
+    --card-bg: #ffffff;
+    --border: #e0e0e0;
+    --text-muted: #666666;
+}
+
+/* =========================
+   GENERIC LAYOUT HELPERS
+   ========================= */
+.section {
+    padding: 60px 5%;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    margin-top: 4px;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 5%;
+}
+
+.nav-logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    padding: 4px 8px;
+    border-radius: 999px;
+}
+
+.nav-links a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+/* =========================
+   AUTH (LOGIN / REGISTER)
+   ========================= */
+.auth-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    background: linear-gradient(135deg, #e8f5e9, #fff8e1);
+}
+
+.auth-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 16px;
+    border-radius: 999px;
+    background-color: #f0f0f0;
+    padding: 4px;
+}
+
+.auth-tab {
+    flex: 1;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.auth-tab.active {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+.auth-form h2 {
+    margin-bottom: 12px;
+}
+
+.auth-form label {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.auth-form input,
+.auth-form select {
+    width: 100%;
+    margin-top: 4px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.auth-form .btn-primary {
+    margin-top: 16px;
+    width: 100%;
+}
+
+.auth-extra {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* little fade effect if you want */
+.auth-form {
+    transition: opacity 0.25s ease-in-out;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background-color: #d7f0da;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    opacity: 0.9;
+}
+
+.btn-group .btn-primary,
+.btn-group .btn-secondary {
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+/* =========================
+   CARDS & GENERIC UI BLOCKS
+   ========================= */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f2f2f2;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+}
+
+.card h4 {
+    margin-bottom: 6px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+/* Info box (highlight) */
+.info-box {
+    background-color: #f9fafb;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    border: 1px dashed var(--border);
+    font-size: 0.9rem;
+}
+
+/* Lists */
+.list {
+    padding-left: 20px;
+    font-size: 0.9rem;
+}
+
+.list li {
+    margin-bottom: 4px;
+}
+
+/* Tables */
+.simple-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.simple-table th,
+.simple-table td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.simple-table th {
+    background-color: #f5f5f5;
+}
+
+/* =========================
+   DASHBOARD
+   ========================= */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    gap: 20px;
+}
+
+.dashboard-left,
+.dashboard-right {
+    width: 100%;
+}
+
+/* =========================
+   TWO-COLUMN LAYOUT
+   (crop, fertilizer, disease, profile)
+   ========================= */
+.two-col {
+    display: grid;
+    grid-template-columns: 1.3fr 1.2fr;
+    gap: 20px;
+}
+
+/* Forms inside cards */
+.form-card label {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* =========================
+   CROP RECOMMENDATION
+   ========================= */
+.recommendation-main {
+    margin-bottom: 10px;
+}
+
+.recommendation-main p {
+    font-size: 0.95rem;
+}
+
+.recommendation-alt ul {
+    margin-top: 4px;
+}
+
+/* =========================
+   UPLOAD BOX (Disease Detection)
+   ========================= */
+.upload-box {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin: 12px 0;
+    font-size: 0.9rem;
+    background-color: #fafafa;
+}
+
+/* =========================
+   CHATBOT
+   ========================= */
+.chatbot-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.chat-window {
+    background-color: #f9fafb;
+    border-radius: 12px;
+    padding: 12px;
+    height: 260px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    max-width: 80%;
+    padding: 8px 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.chat-message.bot {
+    background-color: var(--primary-light);
+    align-self: flex-start;
+}
+
+.chat-message.user {
+    background-color: #e0f2f1;
+    align-self: flex-end;
+}
+
+.chat-quick {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+/* Quick question pills */
+.chip {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background-color: #eeeeee;
+    border: none;
+    margin: 4px 6px 4px 0;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.chip:hover {
+    background-color: #e0e0e0;
+}
+
+/* Input area */
+.chat-input-area {
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   PROFILE
+   ========================= */
+/* Nothing special; uses .two-col and .card */
+/* You can add small tweaks if you like: */
+
+#profile .card p {
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer {
+    text-align: center;
+    padding: 16px 10px;
+    background-color: #ffffff;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 20px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 900px) {
+    .dashboard-grid,
+    .two-col,
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        margin-top: 8px;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 4px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .section {
+        padding: 40px 4%;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .chat-window {
+        height: 220px;
+    }
+}
+.hidden {
+    display: none;
+}
+
+.auth-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.auth-container {
+    width: 350px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+/* Crop Recommendation Page */
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Form Layout */
+
+.form-card {
+    padding: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Input Groups */
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Full-width button */
+
+.full-width {
+    grid-column: span 2;
+}
+
+/* Predict Button */
+
+.predict-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+}
+
+/* Result Card */
+
+.result-card {
+    margin-top: 30px;
+    background: #f4fff6;
+    border-left: 6px solid #28a745;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/* Prediction Output */
+
+.prediction-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Note text */
+
+.prediction-note {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+/* ===============================
+   Fertilizer Recommendation Page
+=============================== */
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+
+/* Form Card */
+
+.fertilizer-form-card {
+    padding: 30px;
+}
+
+
+/* Form Layout */
+
+.fertilizer-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+
+/* Input Section */
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: 0.2s ease;
+}
+
+.input-group input:focus {
+    border-color: #2e7d32;
+    outline: none;
+}
+
+
+/* Button Full Width */
+
+.full-width {
+    grid-column: span 2;
+}
+
+
+/* Button Styling */
+
+.fertilizer-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+}
+
+
+/* Result Card */
+
+.fertilizer-result-card {
+
+    margin-top: 30px;
+
+    background: #f1fff4;
+
+    border-left: 6px solid #2e7d32;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+
+}
+
+
+/* Result Text */
+
+.fertilizer-value {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #2e7d32;
+
+}
+
+
+/* Explanation Text */
+
+.fertilizer-note {
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #555;
+
+}
+/* ===============================
+   CHATBOT MODULE STYLING
+=============================== */
+
+.chat-wrapper {
+
+    max-width: 800px;
+
+    margin: auto;
+
+}
+
+
+/* Chat Window */
+
+.chat-box {
+
+    height: 420px;
+
+    overflow-y: auto;
+
+    background: #f6faf7;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Chat Messages */
+
+.chat-message {
+
+    padding: 12px;
+
+    margin-bottom: 15px;
+
+    border-radius: 8px;
+
+    max-width: 75%;
+
+}
+
+
+/* User Message */
+
+.user-message {
+
+    background: #d9edf7;
+
+    margin-left: auto;
+
+    text-align: right;
+
+}
+
+
+/* Bot Message */
+
+.bot-message {
+
+    background: #e9f9ee;
+
+    border-left: 5px solid #2e7d32;
+
+}
+
+
+/* Message Labels */
+
+.chat-label {
+
+    font-weight: bold;
+
+    font-size: 13px;
+
+    color: #555;
+
+}
+
+
+/* Chat Input Section */
+
+.chat-input-area {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+/* Input Box */
+
+.chat-input-area input {
+
+    flex: 1;
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    border: 1px solid #ccc;
+
+}
+
+
+/* Send Button */
+
+.chat-input-area button {
+
+    background: #2e7d32;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 25px;
+
+    border-radius: 6px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+/* Hover Effect */
+
+.chat-input-area button:hover {
+
+    background: #256428;
+
+}
