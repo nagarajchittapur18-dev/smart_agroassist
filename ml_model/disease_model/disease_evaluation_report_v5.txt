@@ -1,0 +1,136 @@
+SMART AGROASSIST - V5 DISEASE MODEL EVALUATION
+============================================================
+
+TEST DATASET INFORMATION
+Number of test images: 236
+Number of classes: 27
+
+MODEL INFORMATION
+Model: disease_model_v5.keras
+Image Size: (224, 224)
+Batch Size: 32
+
+ACCURACY
+Top-1 Accuracy: 52.97%
+Top-3 Accuracy: 76.69%
+
+CLASSIFICATION REPORT
+                            precision    recall  f1-score   support
+
+           Apple Scab Leaf       0.30      0.70      0.42        10
+                Apple leaf       0.36      0.56      0.43         9
+           Apple rust leaf       0.50      0.50      0.50        10
+          Bell_pepper leaf       0.43      0.38      0.40         8
+     Bell_pepper leaf spot       0.50      0.67      0.57         9
+            Blueberry leaf       0.67      0.55      0.60        11
+               Cherry leaf       0.67      0.80      0.73        10
+       Corn Gray leaf spot       0.33      0.50      0.40         4
+          Corn leaf blight       1.00      0.58      0.74        12
+            Corn rust leaf       0.67      0.80      0.73        10
+                Peach leaf       0.86      0.67      0.75         9
+  Potato leaf early blight       0.31      0.50      0.38         8
+   Potato leaf late blight       0.33      0.12      0.18         8
+            Raspberry leaf       1.00      0.29      0.44         7
+             Soyabean leaf       0.44      0.50      0.47         8
+Squash Powdery mildew leaf       0.57      0.67      0.62         6
+           Strawberry leaf       0.58      0.88      0.70         8
+  Tomato Early blight leaf       0.50      0.22      0.31         9
+ Tomato Septoria leaf spot       0.86      0.55      0.67        11
+               Tomato leaf       0.33      0.12      0.18         8
+Tomato leaf bacterial spot       0.00      0.00      0.00         9
+   Tomato leaf late blight       0.46      0.60      0.52        10
+  Tomato leaf mosaic virus       0.00      0.00      0.00        10
+  Tomato leaf yellow virus       1.00      0.50      0.67         6
+          Tomato mold leaf       0.29      0.67      0.40         6
+                grape leaf       0.83      0.83      0.83        12
+      grape leaf black rot       0.67      1.00      0.80         8
+
+                  accuracy                           0.53       236
+                 macro avg       0.54      0.52      0.50       236
+              weighted avg       0.55      0.53      0.51       236
+
+
+CONFUSION MATRIX
+[[ 7  0  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1  0  0]
+ [ 2  5  0  0  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 3  1  5  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 1  0  0  3  2  0  0  0  0  0  0  0  0  0  2  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 1  0  0  0  6  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0
+   0  0  0]
+ [ 1  4  0  0  0  6  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 0  1  0  0  0  1  8  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 0  0  0  0  0  0  0  2  0  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 0  0  0  0  0  0  0  3  7  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 0  0  1  0  0  0  0  1  0  8  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 0  1  0  0  0  0  2  0  0  0  6  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 1  1  0  0  0  0  0  0  0  0  0  4  1  0  1  0  0  0  0  0  0  0  0  0
+   0  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  3  1  0  1  0  0  0  0  0  0  3  0  0
+   0  0  0]
+ [ 0  0  1  0  0  0  0  0  0  0  0  0  0  2  0  0  3  0  0  0  0  0  0  0
+   0  1  0]
+ [ 1  0  0  1  0  1  0  0  0  0  0  0  0  0  4  0  1  0  0  0  0  0  0  0
+   0  0  0]
+ [ 1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0  0  0  0  0
+   1  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  7  0  0  0  0  0  0  0
+   0  1  0]
+ [ 1  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  2  0  1  0  3  0  0
+   0  0  1]
+ [ 1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  6  0  1  0  0  0
+   2  0  0]
+ [ 1  0  0  2  0  0  0  0  0  0  0  1  0  0  1  0  0  0  0  1  0  0  0  0
+   1  0  1]
+ [ 1  1  0  0  1  0  0  0  0  0  0  0  0  0  0  1  0  1  1  0  0  1  0  0
+   2  0  0]
+ [ 0  0  0  0  1  0  0  0  0  0  0  1  1  0  0  0  0  1  0  0  0  6  0  0
+   0  0  0]
+ [ 1  0  0  1  0  1  0  0  0  0  1  1  0  0  0  2  0  0  0  0  0  0  0  0
+   3  0  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  3
+   0  0  2]
+ [ 0  0  0  0  1  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0
+   4  0  0]
+ [ 0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0
+   0 10  0]
+ [ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0  0  8]]
+
+PREDICTION DISTRIBUTION
+Apple Scab Leaf: 23 predictions
+Apple leaf: 14 predictions
+Apple rust leaf: 10 predictions
+Bell_pepper leaf: 7 predictions
+Bell_pepper leaf spot: 12 predictions
+Blueberry leaf: 9 predictions
+Cherry leaf: 12 predictions
+Corn Gray leaf spot: 6 predictions
+Corn leaf blight: 7 predictions
+Corn rust leaf: 12 predictions
+Peach leaf: 7 predictions
+Potato leaf early blight: 13 predictions
+Potato leaf late blight: 3 predictions
+Raspberry leaf: 2 predictions
+Soyabean leaf: 9 predictions
+Squash Powdery mildew leaf: 7 predictions
+Strawberry leaf: 12 predictions
+Tomato Early blight leaf: 4 predictions
+Tomato Septoria leaf spot: 7 predictions
+Tomato leaf: 3 predictions
+Tomato leaf bacterial spot: 2 predictions
+Tomato leaf late blight: 13 predictions
+Tomato leaf mosaic virus: 1 predictions
+Tomato leaf yellow virus: 3 predictions
+Tomato mold leaf: 14 predictions
+grape leaf: 12 predictions
+grape leaf black rot: 12 predictions

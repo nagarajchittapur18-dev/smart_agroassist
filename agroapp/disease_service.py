@@ -14,8 +14,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DISEASE_MODEL_DIR = BASE_DIR / "ml_model" / "disease_model"
 
-MODEL_PATH = DISEASE_MODEL_DIR / "disease_model_v3.keras"
-CLASS_NAMES_PATH = DISEASE_MODEL_DIR / "class_names_v3.txt"
+# V5 MODEL
+MODEL_PATH = DISEASE_MODEL_DIR / "disease_model_v5.keras"
+
+# V5 CLASS NAMES
+CLASS_NAMES_PATH = DISEASE_MODEL_DIR / "class_names_v5.txt"
+
+# Disease information
 DISEASE_INFO_PATH = DISEASE_MODEL_DIR / "disease_info.json"
 
 
@@ -33,11 +38,11 @@ MEDIUM_CONFIDENCE = 0.40
 # Load model
 # --------------------------------------------------
 
-print("Loading Smart AgroAssist disease model...")
+print("Loading Smart AgroAssist V5 disease model...")
 
 model = tf.keras.models.load_model(MODEL_PATH)
 
-print("Disease model loaded successfully.")
+print("V5 disease model loaded successfully.")
 
 
 # --------------------------------------------------
@@ -45,6 +50,7 @@ print("Disease model loaded successfully.")
 # --------------------------------------------------
 
 with open(CLASS_NAMES_PATH, "r", encoding="utf-8") as file:
+
     class_names = [
         line.strip()
         for line in file
@@ -57,6 +63,7 @@ with open(CLASS_NAMES_PATH, "r", encoding="utf-8") as file:
 # --------------------------------------------------
 
 with open(DISEASE_INFO_PATH, "r", encoding="utf-8") as file:
+
     disease_info = json.load(file)
 
 
@@ -78,6 +85,7 @@ def get_confidence_level(confidence):
 # --------------------------------------------------
 # Prepare image
 # --------------------------------------------------
+
 def preprocess_image(image_file):
 
     image = Image.open(image_file).convert("RGB")
@@ -89,8 +97,12 @@ def preprocess_image(image_file):
         dtype=np.float32
     )
 
-    # Do NOT apply MobileNetV2 preprocessing here.
-    # The saved V3 model performs preprocessing internally.
+    # IMPORTANT:
+    # Do NOT apply MobileNetV2 preprocess_input()
+    # here.
+    #
+    # The V5 saved model already contains the
+    # MobileNetV2 preprocessing layer internally.
 
     image_array = np.expand_dims(
         image_array,
@@ -98,6 +110,8 @@ def preprocess_image(image_file):
     )
 
     return image_array
+
+
 # --------------------------------------------------
 # Predict disease
 # --------------------------------------------------
@@ -111,12 +125,17 @@ def predict_disease(image_file):
         verbose=0
     )[0]
 
-    # Top 3 indexes
+
+    # --------------------------------------------------
+    # Get Top 3 Predictions
+    # --------------------------------------------------
+
     top_indices = np.argsort(
         predictions
     )[::-1][:3]
 
     top_predictions = []
+
 
     for index in top_indices:
 
@@ -127,12 +146,16 @@ def predict_disease(image_file):
         )
 
         top_predictions.append({
+
             "disease": disease_name,
+
             "confidence": confidence,
+
             "confidence_percent": round(
                 confidence * 100,
                 2
             ),
+
             "confidence_level": get_confidence_level(
                 confidence
             )
@@ -140,14 +163,18 @@ def predict_disease(image_file):
 
 
     # --------------------------------------------------
-    # Top prediction
+    # Top Prediction
     # --------------------------------------------------
 
     top_prediction = top_predictions[0]
 
     disease_name = top_prediction["disease"]
 
-    # Get information from JSON
+
+    # --------------------------------------------------
+    # Get Disease Information
+    # --------------------------------------------------
+
     info = disease_info.get(
         disease_name,
         {}
@@ -155,7 +182,7 @@ def predict_disease(image_file):
 
 
     # --------------------------------------------------
-    # Low confidence handling
+    # Confidence Handling
     # --------------------------------------------------
 
     if top_prediction["confidence"] < MEDIUM_CONFIDENCE:
@@ -179,7 +206,7 @@ def predict_disease(image_file):
 
 
     # --------------------------------------------------
-    # Final result
+    # Final Result
     # --------------------------------------------------
 
     result = {
@@ -234,5 +261,6 @@ def predict_disease(image_file):
             []
         )
     }
+
 
     return result
