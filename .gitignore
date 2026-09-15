@@ -39,3 +39,10 @@ Thumbs.db
 # Secrets
 *.pem
 *.key
+
+# Disease detection dataset and original PlantDoc repository
+ml_model/disease_model/dataset/
+ml_model/disease_model/PlantDoc/
+
+# TensorFlow/Keras training cache
+ml_model/disease_model/__pycache__/

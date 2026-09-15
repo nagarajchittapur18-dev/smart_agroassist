@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # import google as genai
 from google.genai import Client
 from django.conf import settings
-
+from .disease_service import predict_disease
 import os
 import joblib
 import numpy as np
@@ -243,144 +243,53 @@ with open("agroapp/ml_model/labels.txt", "r") as f:
 # DISEASE DETECTION VIEW
 # =====================================================
 
+# ===============================
+# DISEASE DETECTION VIEW
+# ===============================
+@login_required
 def disease_detection(request):
 
     result = None
+    error = None
 
-    if request.method == "POST" and request.FILES.get("leaf_image"):
+    if request.method == "POST":
 
-        image = request.FILES["leaf_image"]
+        leaf_image = request.FILES.get("leaf_image")
 
-        fs = FileSystemStorage()
+        if not leaf_image:
+            error = "Please upload a leaf image."
 
-        filename = fs.save(image.name, image)
+        else:
+            try:
+                # Save uploaded image
+                fs = FileSystemStorage()
+                filename = fs.save(leaf_image.name, leaf_image)
 
-        image_path = fs.path(filename)
+                # URL used by the HTML to display the image
+                image_url = fs.url(filename)
 
-        image_url = fs.url(filename)
+                # Run AI prediction
+                result = predict_disease(leaf_image)
 
-        # ============================================
-        # IMAGE PREPROCESSING
-        # ============================================
+                # Add uploaded image URL to result
+                result["image_url"] = image_url
 
-        img = Image.open(image_path).convert("RGB")
+            except Exception as e:
+                print("Disease Detection Error:", e)
 
-        img = img.resize((224, 224))
-
-        img_array = np.array(img)
-
-        img_array = (img_array / 127.5) - 1
-
-        img_array = np.expand_dims(img_array, axis=0)
-
-        # ============================================
-        # PREDICTION
-        # ============================================
-
-        prediction_array = model.predict(img_array)
-
-        index = np.argmax(prediction_array)
-
-        disease_name = class_names[index].strip()
-
-        # Remove numbering if present
-        disease_name = disease_name.replace("0 ", "")
-        disease_name = disease_name.replace("1 ", "")
-        disease_name = disease_name.replace("2 ", "")
-        disease_name = disease_name.replace("3 ", "")
-
-        confidence = round(
-            float(np.max(prediction_array)) * 100,
-            2
-        )
-
-        # ============================================
-        # DISEASE KNOWLEDGE BASE
-        # ============================================
-
-        disease_data = {
-
-            "EARLY BLIGHT": {
-
-                "symptoms": [
-                    "Brown circular spots on leaves",
-                    "Yellowing around infected area",
-                    "Dry patches spreading across leaf"
-                ],
-
-                "recommendation":
-                    "Apply fungicide spray, remove infected leaves, and avoid overwatering."
-            },
-
-            "LATE BLIGHT": {
-
-                "symptoms": [
-                    "Dark water-soaked lesions",
-                    "Rapid leaf decay",
-                    "White fungal growth under leaves"
-                ],
-
-                "recommendation":
-                    "Use copper-based fungicide and improve air circulation."
-            },
-
-            "Healthy": {
-
-                "symptoms": [
-                    "Leaf appears healthy and green"
-                ],
-
-                "recommendation":
-                    "Plant is healthy. Continue proper care."
-            }
-        }
-
-        # ============================================
-        # GET DISEASE INFORMATION
-        # ============================================
-
-        disease_info = disease_data.get(
-
-            disease_name,
-
-            {
-                "symptoms": [
-                    "No symptom information available"
-                ],
-
-                "recommendation":
-                    "Consult agriculture expert."
-            }
-        )
-
-        # ============================================
-        # RESULT OBJECT
-        # ============================================
-
-        result = {
-
-            "name": disease_name,
-
-            "confidence": confidence,
-
-            "symptoms": disease_info["symptoms"],
-
-            "recommendation": disease_info["recommendation"],
-
-            "image_url": image_url
-        }
+                error = (
+                    "Unable to process the image. "
+                    "Please upload a valid leaf image."
+                )
 
     return render(
-
         request,
-
         "disease_detection.html",
-
         {
-            "result": result
+            "result": result,
+            "error": error
         }
     )
-
 # CHATBOT VIEW
 # ==============================
 @login_required

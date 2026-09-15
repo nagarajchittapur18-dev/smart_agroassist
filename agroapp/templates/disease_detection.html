@@ -4,92 +4,316 @@
 
 {% block content %}
 <section class="section" id="disease">
+
     <h2 class="section-title">Disease Detection</h2>
-    <p class="section-subtitle">Upload leaf image to detect possible disease</p>
+    <p class="section-subtitle">
+        Upload a leaf image to detect a possible plant disease
+    </p>
 
     <div class="two-col">
+
         <!-- LEFT: Upload Form -->
         <div class="card form-card">
-            <h3>Upload Leaf Image</h3>
-            <p>Take a clear photo of the affected leaf and upload it below.</p>
 
-            <!-- For now just a basic form (you can connect to ML later) -->
+            <h3>Upload Leaf Image</h3>
+
+            <p>
+                Take a clear photo of the affected leaf and upload it below.
+            </p>
+
             <form method="POST" enctype="multipart/form-data">
+
                 {% csrf_token %}
 
                 <div class="upload-box">
-                    <p>Drag &amp; Drop image here (UI only)</p>
+
+                    <p>Drag &amp; Drop image here</p>
                     <p>or</p>
-                    <input type="file" name="leaf_image" accept="image/*" style="margin:8px 0;">
+
+                    <input
+                        type="file"
+                        name="leaf_image"
+                        accept="image/*"
+                        required
+                        style="margin:8px 0;"
+                    >
+
                 </div>
 
-                <button type="submit" class="btn-primary">Analyze Disease</button>
+                <button type="submit" class="btn-primary">
+                    Analyze Disease
+                </button>
+
             </form>
 
-            <div class="info-box" style="margin-top: 14px;">
+            <!-- Error Message -->
+            {% if error %}
+                <div class="info-box" style="margin-top:14px;">
+                    <p><strong>{{ error }}</strong></p>
+                </div>
+            {% endif %}
+
+            <!-- Tips -->
+            <div class="info-box" style="margin-top:14px;">
+
                 <h4>Tips for better results</h4>
+
                 <ul class="list">
-                    <li>Use good daylight when taking the photo.</li>
-                    <li>Focus only on the affected leaf area.</li>
-                    <li>Avoid blurry or too dark images.</li>
+
+                    <li>
+                        Use good daylight when taking the photo.
+                    </li>
+
+                    <li>
+                        Focus only on the affected leaf area.
+                    </li>
+
+                    <li>
+                        Avoid blurry or too dark images.
+                    </li>
+
+                    <li>
+                        Keep the leaf clearly visible in the image.
+                    </li>
+
                 </ul>
+
             </div>
+
         </div>
 
-        <!-- RIGHT: Sample / Result Section -->
+
+        <!-- RIGHT: Result -->
         <div class="card">
+
             <h3>Disease Analysis Result</h3>
 
             {% if result %}
-                <!-- If you later pass real result from view -->
-                <p><strong>Disease Name:</strong> {{ result.name }}</p>
-                <p><strong>Confidence:</strong> {{ result.confidence }} %</p>
+
+                <!-- Uploaded Image -->
                 {% if result.image_url %}
-    <img src="{{ result.image_url }}"
-         style="width:100%; max-width:300px; border-radius:10px; margin:15px 0;">
-{% endif %}
+
+                    <div style="margin:15px 0;">
+
+                        <h4>Uploaded Image</h4>
+
+                        <img
+                            src="{{ result.image_url }}"
+                            alt="Uploaded leaf"
+                            style="
+                                width:100%;
+                                max-width:300px;
+                                border-radius:10px;
+                                margin-top:8px;
+                            "
+                        >
+
+                    </div>
+
+                {% endif %}
+
+
+                <!-- Main Prediction -->
                 <div class="info-box">
-                    <h4>Symptoms</h4>
-                    <ul class="list">
-                        {% for s in result.symptoms %}
-                            <li>{{ s }}</li>
-                        {% endfor %}
-                    </ul>
+
+                    <h4>Possible Disease</h4>
+
+                    <p>
+                        <strong>{{ result.common_name }}</strong>
+                    </p>
+
+                    <p>
+                        <strong>AI Class:</strong>
+                        {{ result.disease }}
+                    </p>
+
+                    <p>
+                        <strong>Crop:</strong>
+                        {{ result.crop }}
+                    </p>
+
+                    <p>
+                        <strong>Confidence:</strong>
+                        {{ result.confidence_percent }}%
+                    </p>
+
+                    <p>
+                        <strong>Confidence Level:</strong>
+                        {{ result.confidence_level }}
+                    </p>
+
                 </div>
 
+
+                <!-- Prediction Status -->
                 <div class="info-box">
-                    <h4>Recommended Action</h4>
-                    <p>{{ result.recommendation }}</p>
-                    <p style="font-size:0.85rem; margin-top:6px;">
-                        Note: Always verify treatment with local agriculture officers before using chemicals.
+
+                    <h4>Prediction Status</h4>
+
+                    <p>
+                        {{ result.message }}
                     </p>
+
+                    {% if result.confidence_level == "LOW" %}
+
+                        <p style="margin-top:10px;">
+                            <strong>
+                                ⚠ Low confidence:
+                            </strong>
+
+                            Try uploading a clearer image with good
+                            lighting and the leaf filling most of the frame.
+                        </p>
+
+                    {% endif %}
+
                 </div>
+
+
+                <!-- Description -->
+                <div class="info-box">
+
+                    <h4>Description</h4>
+
+                    <p>
+                        {{ result.description }}
+                    </p>
+
+                </div>
+
+
+                <!-- Top 3 Predictions -->
+                <div class="info-box">
+
+                    <h4>Top 3 AI Predictions</h4>
+
+                    <ol class="list">
+
+                        {% for prediction in result.top_3 %}
+
+                            <li>
+
+                                <strong>
+                                    {{ prediction.disease }}
+                                </strong>
+
+                                -
+                                {{ prediction.confidence_percent }}%
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ol>
+
+                </div>
+
+
+                <!-- Symptoms -->
+                <div class="info-box">
+
+                    <h4>Symptoms / Indicators</h4>
+
+                    <ul class="list">
+
+                        {% for symptom in result.symptoms %}
+
+                            <li>
+                                {{ symptom }}
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Recommended Actions -->
+                <div class="info-box">
+
+                    <h4>Recommended Actions</h4>
+
+                    <ul class="list">
+
+                        {% for action in result.recommended_actions %}
+
+                            <li>
+                                {{ action }}
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                    <p style="font-size:0.85rem; margin-top:10px;">
+
+                        <strong>Note:</strong>
+                        Always verify treatment with local agriculture
+                        officers before using chemicals.
+
+                    </p>
+
+                </div>
+
+
+                <!-- Prevention -->
+                <div class="info-box">
+
+                    <h4>Prevention</h4>
+
+                    <ul class="list">
+
+                        {% for prevention_item in result.prevention %}
+
+                            <li>
+                                {{ prevention_item }}
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+
             {% else %}
-                <!-- Static placeholder for now -->
+
+                <!-- Initial State -->
                 <p class="section-subtitle">
-                    After you upload an image and click <strong>Analyze Disease</strong>, the result will appear here.
-                    For demo purposes, you can explain how an ML model would classify leaf diseases.
+
+                    After you upload an image and click
+                    <strong>Analyze Disease</strong>,
+                    the AI prediction will appear here.
+
                 </p>
 
                 <div class="info-box">
-                    <h4>Example (Sample Output)</h4>
-                    <p><strong>Disease Name:</strong> Possible Leaf Blight</p>
-                    <p><strong>Confidence:</strong> 87%</p>
 
-                    <h4 style="margin-top: 10px;">Symptoms</h4>
-                    <ul class="list">
-                        <li>Small brown spots on leaves.</li>
-                        <li>Spots merging into larger irregular patches.</li>
-                    </ul>
+                    <h4>How it works</h4>
 
-                    <h4 style="margin-top: 10px;">Recommended Action</h4>
                     <p>
-                        Use recommended fungicide as per local guidelines, remove heavily affected leaves,
-                        and avoid overhead irrigation in the evening.
+                        Smart AgroAssist uses a deep learning image
+                        classification model to analyze the uploaded
+                        leaf image and provide a possible disease
+                        prediction.
                     </p>
+
+                    <p style="margin-top:10px;">
+
+                        The result is an AI-based preliminary indication
+                        and should not be considered a definitive
+                        agricultural diagnosis.
+
+                    </p>
+
                 </div>
+
             {% endif %}
+
         </div>
+
     </div>
+
 </section>
 {% endblock %}

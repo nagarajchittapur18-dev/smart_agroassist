@@ -1,0 +1,569 @@
+{
+    "Apple Scab Leaf": {
+        "common_name": "Apple Scab",
+        "crop": "Apple",
+        "description": "A fungal disease that commonly affects apple leaves and can cause dark lesions.",
+        "symptoms": [
+            "Olive or dark spots on leaves",
+            "Irregular brown lesions",
+            "Affected leaves may yellow or fall prematurely"
+        ],
+        "recommended_actions": [
+            "Remove severely affected leaves",
+            "Improve air circulation around the plant",
+            "Avoid prolonged leaf wetness",
+            "Use appropriate fungicide only according to local agricultural guidance"
+        ],
+        "prevention": [
+            "Remove fallen infected leaves",
+            "Maintain good orchard sanitation",
+            "Avoid excessive moisture around foliage"
+        ]
+    },
+
+    "Apple leaf": {
+        "common_name": "Apple Leaf",
+        "crop": "Apple",
+        "description": "The PlantDoc class represents apple leaf images that may not correspond to a specific disease.",
+        "symptoms": [
+            "No specific disease symptoms can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect the leaf carefully for visible spots or lesions",
+            "Monitor the plant for changes",
+            "Upload a clear close-up image if disease symptoms are visible"
+        ],
+        "prevention": [
+            "Maintain proper plant nutrition",
+            "Keep the growing area clean",
+            "Regularly inspect leaves"
+        ]
+    },
+
+    "Apple rust leaf": {
+        "common_name": "Apple Rust",
+        "crop": "Apple",
+        "description": "A fungal disease that can produce rust-colored lesions on apple leaves.",
+        "symptoms": [
+            "Yellow or orange spots",
+            "Rust-colored lesions",
+            "Premature leaf damage"
+        ],
+        "recommended_actions": [
+            "Remove severely affected plant material",
+            "Improve air circulation",
+            "Monitor nearby plants for similar symptoms",
+            "Follow local agricultural recommendations for disease control"
+        ],
+        "prevention": [
+            "Maintain orchard sanitation",
+            "Remove infected fallen leaves",
+            "Monitor plants regularly"
+        ]
+    },
+
+    "Bell_pepper leaf": {
+        "common_name": "Bell Pepper Leaf",
+        "crop": "Bell Pepper",
+        "description": "This PlantDoc class represents bell pepper leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect leaves for spots, discoloration or deformation",
+            "Monitor the plant regularly",
+            "Upload a clearer image if symptoms are present"
+        ],
+        "prevention": [
+            "Maintain proper watering",
+            "Provide good air circulation",
+            "Keep the growing area clean"
+        ]
+    },
+
+    "Bell_pepper leaf spot": {
+        "common_name": "Bell Pepper Leaf Spot",
+        "crop": "Bell Pepper",
+        "description": "Leaf spotting symptoms affecting bell pepper foliage.",
+        "symptoms": [
+            "Small spots on leaves",
+            "Brown or dark lesions",
+            "Possible yellowing around affected areas"
+        ],
+        "recommended_actions": [
+            "Remove severely affected leaves",
+            "Avoid overhead irrigation",
+            "Improve air circulation",
+            "Follow local agricultural disease-management recommendations"
+        ],
+        "prevention": [
+            "Avoid prolonged leaf wetness",
+            "Maintain adequate spacing",
+            "Remove infected plant debris"
+        ]
+    },
+
+    "Blueberry leaf": {
+        "common_name": "Blueberry Leaf",
+        "crop": "Blueberry",
+        "description": "This PlantDoc class represents blueberry leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect the leaf for spots or discoloration",
+            "Monitor plant health",
+            "Upload a clearer image if symptoms are visible"
+        ],
+        "prevention": [
+            "Maintain good plant nutrition",
+            "Provide adequate air circulation",
+            "Keep the growing area clean"
+        ]
+    },
+
+    "Cherry leaf": {
+        "common_name": "Cherry Leaf",
+        "crop": "Cherry",
+        "description": "This PlantDoc class represents cherry leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect leaves regularly",
+            "Look for spots, lesions or unusual discoloration",
+            "Upload a clear image if symptoms are present"
+        ],
+        "prevention": [
+            "Maintain orchard sanitation",
+            "Remove fallen leaves when appropriate",
+            "Monitor plants regularly"
+        ]
+    },
+
+    "Corn Gray leaf spot": {
+        "common_name": "Corn Gray Leaf Spot",
+        "crop": "Corn",
+        "description": "A fungal disease associated with gray or elongated lesions on corn leaves.",
+        "symptoms": [
+            "Long gray or tan lesions",
+            "Lesions developing along leaf surfaces",
+            "Reduced healthy green leaf area"
+        ],
+        "recommended_actions": [
+            "Monitor disease progression",
+            "Remove or manage infected crop residue according to local practice",
+            "Improve field management and airflow",
+            "Follow local agricultural recommendations"
+        ],
+        "prevention": [
+            "Practice crop rotation where appropriate",
+            "Manage crop residue",
+            "Use suitable disease-resistant varieties when available"
+        ]
+    },
+
+    "Corn leaf blight": {
+        "common_name": "Corn Leaf Blight",
+        "crop": "Corn",
+        "description": "A leaf disease of corn that can cause elongated or irregular lesions.",
+        "symptoms": [
+            "Brown or tan leaf lesions",
+            "Elongated spots",
+            "Progressive leaf damage"
+        ],
+        "recommended_actions": [
+            "Monitor affected plants",
+            "Manage infected crop residue",
+            "Maintain good field sanitation",
+            "Follow local agricultural recommendations"
+        ],
+        "prevention": [
+            "Use crop rotation where suitable",
+            "Select resistant varieties when available",
+            "Manage crop residue"
+        ]
+    },
+
+    "Corn rust leaf": {
+        "common_name": "Corn Rust",
+        "crop": "Corn",
+        "description": "A fungal disease that produces rust-colored pustules on corn leaves.",
+        "symptoms": [
+            "Small reddish-brown or rust-colored pustules",
+            "Pustules on leaf surfaces",
+            "Leaf discoloration"
+        ],
+        "recommended_actions": [
+            "Monitor disease spread",
+            "Remove severely affected material where practical",
+            "Follow local crop disease-management guidance"
+        ],
+        "prevention": [
+            "Use resistant varieties when available",
+            "Monitor fields regularly",
+            "Maintain appropriate crop management"
+        ]
+    },
+
+    "Peach leaf": {
+        "common_name": "Peach Leaf",
+        "crop": "Peach",
+        "description": "This PlantDoc class represents peach leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect leaves for curling, spots or discoloration",
+            "Monitor plant health",
+            "Upload a clearer image if symptoms are visible"
+        ],
+        "prevention": [
+            "Maintain orchard sanitation",
+            "Monitor plants regularly",
+            "Provide suitable growing conditions"
+        ]
+    },
+
+    "Potato leaf early blight": {
+        "common_name": "Potato Early Blight",
+        "crop": "Potato",
+        "description": "A fungal disease commonly associated with dark lesions and concentric patterns on potato leaves.",
+        "symptoms": [
+            "Dark brown leaf spots",
+            "Concentric ring patterns",
+            "Yellowing around lesions",
+            "Premature leaf death"
+        ],
+        "recommended_actions": [
+            "Remove severely infected leaves",
+            "Avoid prolonged leaf wetness",
+            "Maintain adequate plant spacing",
+            "Follow local agricultural recommendations for fungicide use"
+        ],
+        "prevention": [
+            "Use healthy planting material",
+            "Practice crop rotation",
+            "Remove infected crop debris"
+        ]
+    },
+
+    "Potato leaf late blight": {
+        "common_name": "Potato Late Blight",
+        "crop": "Potato",
+        "description": "A serious disease that can cause rapidly expanding dark lesions on potato foliage.",
+        "symptoms": [
+            "Dark irregular leaf lesions",
+            "Rapidly expanding brown areas",
+            "Leaf tissue death",
+            "Possible white growth under humid conditions"
+        ],
+        "recommended_actions": [
+            "Remove severely affected plant material",
+            "Avoid overhead irrigation",
+            "Improve airflow",
+            "Seek local agricultural guidance for appropriate disease control"
+        ],
+        "prevention": [
+            "Use healthy seed material",
+            "Monitor fields frequently",
+            "Avoid prolonged leaf wetness",
+            "Manage infected plant debris"
+        ]
+    },
+
+    "Raspberry leaf": {
+        "common_name": "Raspberry Leaf",
+        "crop": "Raspberry",
+        "description": "This PlantDoc class represents raspberry leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect leaves for spots or discoloration",
+            "Monitor plant health",
+            "Upload a clearer image if symptoms are present"
+        ],
+        "prevention": [
+            "Maintain good airflow",
+            "Remove plant debris",
+            "Monitor plants regularly"
+        ]
+    },
+
+    "Soyabean leaf": {
+        "common_name": "Soybean Leaf",
+        "crop": "Soybean",
+        "description": "This PlantDoc class represents soybean leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect leaves for spots and discoloration",
+            "Monitor plant development",
+            "Upload a clearer image if symptoms are present"
+        ],
+        "prevention": [
+            "Maintain appropriate field sanitation",
+            "Monitor crops regularly",
+            "Use suitable crop-management practices"
+        ]
+    },
+
+    "Squash Powdery mildew leaf": {
+        "common_name": "Squash Powdery Mildew",
+        "crop": "Squash",
+        "description": "A fungal disease commonly recognized by white powder-like growth on leaves.",
+        "symptoms": [
+            "White powdery patches",
+            "Powder-like growth on leaf surfaces",
+            "Yellowing or weakening of leaves"
+        ],
+        "recommended_actions": [
+            "Remove heavily affected leaves",
+            "Improve air circulation",
+            "Avoid excessive humidity around foliage",
+            "Follow local agricultural recommendations"
+        ],
+        "prevention": [
+            "Provide adequate plant spacing",
+            "Maintain good airflow",
+            "Monitor leaves regularly"
+        ]
+    },
+
+    "Strawberry leaf": {
+        "common_name": "Strawberry Leaf",
+        "crop": "Strawberry",
+        "description": "This PlantDoc class represents strawberry leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect leaves for spots and discoloration",
+            "Monitor plant health",
+            "Upload a clearer image if symptoms are visible"
+        ],
+        "prevention": [
+            "Maintain good airflow",
+            "Remove damaged plant material",
+            "Monitor plants regularly"
+        ]
+    },
+
+    "Tomato Early blight leaf": {
+        "common_name": "Tomato Early Blight",
+        "crop": "Tomato",
+        "description": "A fungal disease that can cause dark lesions and concentric rings on tomato leaves.",
+        "symptoms": [
+            "Dark brown spots",
+            "Concentric ring patterns",
+            "Yellowing around lesions",
+            "Lower leaves may be affected first"
+        ],
+        "recommended_actions": [
+            "Remove severely affected leaves",
+            "Avoid overhead watering",
+            "Improve air circulation",
+            "Follow local agricultural recommendations"
+        ],
+        "prevention": [
+            "Use healthy seedlings",
+            "Rotate crops where appropriate",
+            "Remove infected plant debris",
+            "Avoid prolonged leaf wetness"
+        ]
+    },
+
+    "Tomato Septoria leaf spot": {
+        "common_name": "Tomato Septoria Leaf Spot",
+        "crop": "Tomato",
+        "description": "A fungal disease that produces numerous small spots on tomato leaves.",
+        "symptoms": [
+            "Small circular leaf spots",
+            "Dark margins around spots",
+            "Possible light centers",
+            "Progressive leaf yellowing and loss"
+        ],
+        "recommended_actions": [
+            "Remove affected lower leaves",
+            "Avoid overhead irrigation",
+            "Improve air circulation",
+            "Follow local agricultural recommendations"
+        ],
+        "prevention": [
+            "Remove infected plant debris",
+            "Avoid working with wet plants",
+            "Maintain appropriate spacing"
+        ]
+    },
+
+    "Tomato leaf": {
+        "common_name": "Tomato Leaf",
+        "crop": "Tomato",
+        "description": "This PlantDoc class represents tomato leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect the leaf carefully for visible disease symptoms",
+            "Monitor the plant regularly",
+            "Upload a clearer image if symptoms are present"
+        ],
+        "prevention": [
+            "Maintain good plant hygiene",
+            "Provide adequate airflow",
+            "Avoid excessive leaf wetness"
+        ]
+    },
+
+    "Tomato leaf bacterial spot": {
+        "common_name": "Tomato Bacterial Spot",
+        "crop": "Tomato",
+        "description": "A bacterial disease that can produce small dark spots on tomato leaves.",
+        "symptoms": [
+            "Small dark leaf spots",
+            "Yellowing around lesions",
+            "Leaf damage that can increase under favorable conditions"
+        ],
+        "recommended_actions": [
+            "Remove severely affected leaves",
+            "Avoid working with wet plants",
+            "Use clean planting material",
+            "Follow local agricultural guidance"
+        ],
+        "prevention": [
+            "Avoid overhead irrigation",
+            "Maintain plant sanitation",
+            "Use disease-free seeds or seedlings when possible"
+        ]
+    },
+
+    "Tomato leaf late blight": {
+        "common_name": "Tomato Late Blight",
+        "crop": "Tomato",
+        "description": "A disease that can cause rapidly expanding dark lesions on tomato foliage.",
+        "symptoms": [
+            "Dark irregular leaf spots",
+            "Brown or black lesions",
+            "Rapid leaf deterioration",
+            "Disease progression under humid conditions"
+        ],
+        "recommended_actions": [
+            "Remove severely infected leaves",
+            "Avoid overhead watering",
+            "Improve air circulation",
+            "Seek local agricultural guidance for appropriate treatment"
+        ],
+        "prevention": [
+            "Monitor plants frequently",
+            "Avoid prolonged leaf wetness",
+            "Remove infected plant debris"
+        ]
+    },
+
+    "Tomato leaf mosaic virus": {
+        "common_name": "Tomato Mosaic Virus",
+        "crop": "Tomato",
+        "description": "A viral disease associated with mosaic-like patterns and irregular coloration on tomato leaves.",
+        "symptoms": [
+            "Mosaic patterns",
+            "Light and dark green patches",
+            "Leaf distortion or reduced plant vigor"
+        ],
+        "recommended_actions": [
+            "Remove strongly symptomatic plants according to local guidance",
+            "Disinfect tools after handling affected plants",
+            "Control potential sources of plant-to-plant transmission"
+        ],
+        "prevention": [
+            "Use healthy planting material",
+            "Maintain tool hygiene",
+            "Avoid unnecessary handling of plants"
+        ]
+    },
+
+    "Tomato leaf yellow virus": {
+        "common_name": "Tomato Yellow Leaf Virus",
+        "crop": "Tomato",
+        "description": "A viral disease class associated with yellowing and changes in tomato foliage.",
+        "symptoms": [
+            "Leaf yellowing",
+            "Reduced leaf development",
+            "Possible leaf curling or distortion"
+        ],
+        "recommended_actions": [
+            "Remove severely affected plants according to local agricultural guidance",
+            "Monitor nearby plants",
+            "Manage insect vectors where appropriate"
+        ],
+        "prevention": [
+            "Use healthy seedlings",
+            "Monitor insect populations",
+            "Maintain field sanitation"
+        ]
+    },
+
+    "Tomato mold leaf": {
+        "common_name": "Tomato Leaf Mold",
+        "crop": "Tomato",
+        "description": "A fungal disease associated with mold-like growth and leaf discoloration, particularly under humid conditions.",
+        "symptoms": [
+            "Yellow patches on upper leaf surfaces",
+            "Mold-like growth on lower leaf surfaces",
+            "Leaf yellowing and decline"
+        ],
+        "recommended_actions": [
+            "Improve ventilation",
+            "Reduce excessive humidity",
+            "Remove severely affected leaves",
+            "Avoid prolonged leaf wetness"
+        ],
+        "prevention": [
+            "Provide adequate spacing",
+            "Improve greenhouse ventilation where applicable",
+            "Water plants at the soil level"
+        ]
+    },
+
+    "grape leaf": {
+        "common_name": "Grape Leaf",
+        "crop": "Grape",
+        "description": "This PlantDoc class represents grape leaf images without a specific disease label.",
+        "symptoms": [
+            "No specific disease can be established from this class alone"
+        ],
+        "recommended_actions": [
+            "Inspect leaves for spots or discoloration",
+            "Monitor vine health",
+            "Upload a clearer image if symptoms are present"
+        ],
+        "prevention": [
+            "Maintain vineyard sanitation",
+            "Provide good air circulation",
+            "Monitor vines regularly"
+        ]
+    },
+
+    "grape leaf black rot": {
+        "common_name": "Grape Black Rot",
+        "crop": "Grape",
+        "description": "A fungal disease that can produce dark lesions on grape leaves and affect other plant parts.",
+        "symptoms": [
+            "Brown or reddish leaf spots",
+            "Dark lesions",
+            "Progressive leaf damage"
+        ],
+        "recommended_actions": [
+            "Remove infected plant material",
+            "Improve vineyard sanitation",
+            "Monitor nearby leaves and fruit",
+            "Follow local agricultural disease-management guidance"
+        ],
+        "prevention": [
+            "Remove infected plant debris",
+            "Maintain good air circulation",
+            "Monitor vines regularly"
+        ]
+    }
+}
