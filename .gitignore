@@ -46,3 +46,27 @@ ml_model/disease_model/PlantDoc/
 
 # TensorFlow/Keras training cache
 ml_model/disease_model/__pycache__/
+# Local disease model experiments
+ml_model/disease_model/best_stage1.keras
+ml_model/disease_model/best_stage1_v3.keras
+ml_model/disease_model/class_names.txt
+ml_model/disease_model/class_names_v2.txt
+ml_model/disease_model/class_names_v3_backup.txt
+ml_model/disease_model/class_names_v4.txt
+ml_model/disease_model/disease_evaluation_v4.txt
+ml_model/disease_model/disease_model.keras
+ml_model/disease_model/disease_model_v2.keras
+ml_model/disease_model/disease_model_v3_backup.keras
+ml_model/disease_model/disease_model_v4.keras
+ml_model/disease_model/disease_model_v5_final.keras
+ml_model/disease_model/disease_model_v5_stage1.keras
+ml_model/disease_model/evaluate_disease_model.py
+ml_model/disease_model/evaluate_disease_model_v4.py
+ml_model/disease_model/evaluate_disease_model_v5.py
+ml_model/disease_model/extract_plantdoc.py
+ml_model/disease_model/test_leaf.jpg
+ml_model/disease_model/train_disease_model.py
+ml_model/disease_model/train_disease_model_v2.py
+ml_model/disease_model/train_disease_model_v3.py
+ml_model/disease_model/train_disease_model_v4.py
+ml_model/disease_model/train_disease_model_v5.py
